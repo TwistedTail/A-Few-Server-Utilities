@@ -87,7 +87,7 @@ local Commands = {
 
 		AFSU.ServerNames[Count] = NewName
 
-		PrintActionMessage(Ply, "New server name " .. NewName .. " added.")
+		PrintActionMessage(Ply, "New server name '" .. NewName .. "' added.")
 		AFSU.SaveTableToFile(AFSU.NamesFile, "ServerNames")
 	end,
 	add_servermessage = function(Ply, Args)
@@ -101,8 +101,22 @@ local Commands = {
 
 		AFSU.ServerMessages[Count] = NewMessage
 
-		PrintActionMessage(Ply, "New server message " .. NewMessage .. " added.")
+		PrintActionMessage(Ply, "New server message '" .. NewMessage .. "' added.")
 		AFSU.SaveTableToFile(AFSU.MessagesFile, "ServerMessages")
+	end,
+	add_loadingscreen = function(Ply, Args)
+		if not Args[2] then
+			PrintActionMessage(Ply, "Remember to write the loading screen URL you want to add.")
+			return
+		end
+
+		local Count = #AFSU.LoadingScreens + 1
+		local NewURL = tostring(Args[2])
+
+		AFSU.LoadingScreens[Count] = NewURL
+
+		PrintActionMessage(Ply, "New loading screen URL '" .. NewURL .. "' added.")
+		AFSU.SaveTableToFile(AFSU.LoadingScreenFile, "LoadingScreens")
 	end,
 	list_servernames = function(Ply)
 		local Left = #AFSU.ServerNames
@@ -150,7 +164,29 @@ local Commands = {
 			PrintActionMessage(Ply, Message, true)
 		until Left <= 0
 	end,
+	list_loadingscreens = function(Ply)
+		local Left = #AFSU.LoadingScreens
+		local Parts = 0
 
+		PrintActionMessage(Ply, "Registered loading screen URLs:")
+
+		repeat
+			local Message = ""
+			local Amount = math.min(5, Left)
+
+			for j = 1, Amount do
+				local Index = (5 * Parts) + j
+				local Current = AFSU.LoadingScreens[Index]
+
+				Message = Message .. "\n\t" .. Index .. ".-\t " .. Current
+			end
+
+			Left = Left - Amount
+			Parts = Parts + 1
+
+			PrintActionMessage(Ply, Message, true)
+		until Left <= 0
+	end,
 }
 
 concommand.Add("afsu", function(Ply, _, Args)

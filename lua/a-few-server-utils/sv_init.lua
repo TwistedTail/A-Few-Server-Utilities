@@ -10,8 +10,10 @@ local util = util
 AFSU.PATH = "a-few-server-utils/"
 AFSU.NamesFile = AFSU.PATH .. "server-names.txt"
 AFSU.MessagesFile = AFSU.PATH .. "server-messages.txt"
+AFSU.LoadingScreenFile = AFSU.PATH .. "loading-screens.txt"
 AFSU.ServerNames = AFSU.ServerNames or {}
 AFSU.ServerMessages = AFSU.ServerMessages or {}
+AFSU.LoadingScreens = AFSU.LoadingScreens or {}
 
 local function CheckFile(File)
 	if not file.Exists(AFSU.PATH, "DATA") then
@@ -38,7 +40,7 @@ local function SaveTableToFile(File, Name)
 end
 
 local function ChangeHostName()
-	if AFSU.ChangeDelay > 0 then
+	if AFSU.HostNameDelay > 0 then
 		if not AFSU.HostName then
 			AFSU.HostName = GetHostName()
 		end
@@ -64,6 +66,15 @@ local function ChangeHostName()
 	end
 end
 
+local function ChangeLoadingScreen()
+	if AFSU.LoadScreenDelay > 0 and next(AFSU.LoadingScreens) then
+		local Index = math.random(1, #AFSU.LoadingScreens)
+		local LoadingURL = AFSU.LoadingScreens[Index]
+
+		RunConsoleCommand("sv_loadingurl", LoadingURL)
+	end
+end
+
 local function RestartServer()
 	print("[Server Utils] Restarting the server.")
 	RunConsoleCommand("_restart")
@@ -86,10 +97,12 @@ end
 local function InitServerFiles()
 	LoadFileToTable(AFSU.NamesFile, "ServerNames")
 	LoadFileToTable(AFSU.MessagesFile, "ServerMessages")
+	LoadFileToTable(AFSU.LoadingScreenFile, "LoadingScreens")
 
 	RunConsoleCommand("sv_hibernate_think", "1")
 
-	timer.Create("AFSU Server Name", AFSU.ChangeDelay, 0, ChangeHostName)
+	timer.Create("AFSU Server Name", AFSU.HostNameDelay, 0, ChangeHostName)
+	timer.Create("AFSU Loading Screen", AFSU.LoadScreenDelay, 0, ChangeLoadingScreen)
 
 	hook.Remove("Initialize", "AFSU Initialize")
 
