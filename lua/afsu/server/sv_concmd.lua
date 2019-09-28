@@ -1,4 +1,4 @@
--- Console Command definition file
+-- Serverside Console Command file
 
 local concommand = concommand
 local hook = hook
@@ -192,9 +192,10 @@ local Commands = {
 concommand.Add("afsu", function(Ply, _, Args)
 	if IsValid(Ply) and not Ply:IsSuperAdmin() then
 		Ply:ChatPrint("[Server Utils] Access denied.")
+		return
 	end
 
-	local Command = Args[1]
+	local Command = unpack(Args)
 
 	if not Command or #Command < 1 then return
 		PrintActionMessage(Ply, "Please input a valid command.")
@@ -211,5 +212,3 @@ hook.Add("PlayerSpawnedProp", "AFSU Freeze Props", SpawnedProp)
 hook.Add("PlayerSpawnedSENT", "AFSU Freeze SENTs", SpawnedSENT)
 hook.Add("PlayerSpawnedVehicle", "AFSU Freeze Vehicles", SpawnedSENT)
 hook.Add("PlayerSpawnedRagdoll", "AFSU Freeze Ragdolls", SpawnedRagdoll)
-
-print("[Server Utils] Loaded Console Commands successfully.")

@@ -7,17 +7,9 @@ local player = player
 local timer = timer
 local util = util
 
-AFSU.PATH = "a-few-server-utils/"
-AFSU.NamesFile = AFSU.PATH .. "server-names.txt"
-AFSU.MessagesFile = AFSU.PATH .. "server-messages.txt"
-AFSU.LoadingScreenFile = AFSU.PATH .. "loading-screens.txt"
-AFSU.ServerNames = AFSU.ServerNames or {}
-AFSU.ServerMessages = AFSU.ServerMessages or {}
-AFSU.LoadingScreens = AFSU.LoadingScreens or {}
-
 local function CheckFile(File)
-	if not file.Exists(AFSU.PATH, "DATA") then
-		file.CreateDir(AFSU.PATH)
+	if not file.Exists(AFSU.DataPath, "DATA") then
+		file.CreateDir(AFSU.DataPath)
 
 		return false
 	end
@@ -105,8 +97,6 @@ local function InitServerFiles()
 	timer.Create("AFSU Loading Screen", AFSU.LoadScreenDelay, 0, ChangeLoadingScreen)
 
 	hook.Remove("Initialize", "AFSU Initialize")
-
-	print("[Server Utils] Loaded Serverside Init successfully.")
 end
 
 hook.Add("Initialize", "AFSU Initialize", InitServerFiles)

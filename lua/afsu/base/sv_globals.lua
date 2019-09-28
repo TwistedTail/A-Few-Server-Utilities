@@ -1,0 +1,14 @@
+-- Serverside Globals file
+
+AFSU.HostNameDelay =		15 -- Interval in seconds between each server name change
+AFSU.LoadScreenDelay =		60 -- Interval in seconds between each loading screen change
+AFSU.RestartDelay =			300 -- Delay in seconds after the last player disconnected to restart the server
+
+AFSU.DataPath =				"a-few-server-utils/"
+AFSU.NamesFile =			AFSU.DataPath .. "server-names.json"
+AFSU.MessagesFile =			AFSU.DataPath .. "server-messages.json"
+AFSU.LoadingScreenFile =	AFSU.DataPath .. "loading-screens.json"
+
+AFSU.ServerNames =			AFSU.ServerNames or {}
+AFSU.ServerMessages =		AFSU.ServerMessages or {}
+AFSU.LoadingScreens =		AFSU.LoadingScreens or {}

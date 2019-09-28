@@ -1,11 +1,61 @@
 -- A Few Server Utilities load
 
-if SERVER then
-	AFSU = AFSU or {}
-	AFSU.HostNameDelay = 15		-- Interval in seconds between each server name change
-	AFSU.LoadScreenDelay = 60	-- Interval in seconds between each loading screen change
-	AFSU.RestartDelay = 300		-- Delay in seconds after the last player disconnected to restart the server
+MsgN("\n» Loading A Few Server Utils")
 
-	include("a-few-server-utils/sv_init.lua")
-	include("a-few-server-utils/concmd.lua")
+local Root = "afsu"
+
+if not AFSU then AFSU = {} end
+
+if SERVER then
+
+	-- Taken from Stooberton's PSA loader
+	local function Load(Path)
+		local Files, Directories = file.Find(Path .. "/*", "LUA")
+
+		for _, File in ipairs(Files) do
+			local Sub = string.sub(File, 1, 3)
+
+			File = Path .. "/" .. File
+
+			if Sub == "cl_" then
+				MsgN(" » " .. File)
+				AddCSLuaFile(File)
+			elseif Sub == "sv_" then
+				MsgN(" » " .. File)
+				include(File)
+			else
+				MsgN(" » " .. File)
+				include(File)
+				AddCSLuaFile(File)
+			end
+		end
+
+		for _, Directory in ipairs(Directories) do
+			Load(Path .. "/" .. Directory)
+		end
+	end
+
+	Load(Root)
+
+elseif CLIENT then
+
+	-- Taken from Stooberton's PSA loader
+	local function Load(Path)
+		local Files, Directories = file.Find(Path .. "/*", "LUA")
+
+		for _, File in ipairs(Files) do
+			File = Path .. "/" .. File
+			MsgN(" » " .. File)
+			include(File)
+		end
+
+		for _, Directory in ipairs(Directories) do
+			Load(Path .. "/" .. Directory)
+		end
+	end
+
+	Load(Root)
+
 end
+
+MsgN("» Loaded!\n")
