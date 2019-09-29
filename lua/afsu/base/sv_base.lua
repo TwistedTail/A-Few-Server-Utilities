@@ -91,18 +91,13 @@ concommand.Add("afsu", function(Player, _, Args)
 
 	local Action, Command = unpack(Args)
 
-	if not Action or not Command then
-		SendMessage(Player, "Error", "Missing arguments!")
+	if not Action or not Commands[Action] then
+		SendMessage(Player, "Error", "The action '", Action or "" , "' is not valid!\n", ListActions())
 		return
 	end
 
-	if not Commands[Action] then
-		SendMessage(Player, "Error", "The action '", Action, "' is not valid!\n", ListActions())
-		return
-	end
-
-	if not Commands[Action][Command] then
-		SendMessage(Player, "Error", "The command '", Command, "' is not valid!\n", ListCommands(Action))
+	if not Command or not Commands[Action][Command] then
+		SendMessage(Player, "Error", "The command '", Command or "", "' is not valid!\n", ListCommands(Action))
 		return
 	end
 
