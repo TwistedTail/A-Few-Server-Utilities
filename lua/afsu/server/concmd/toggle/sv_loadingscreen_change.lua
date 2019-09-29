@@ -18,6 +18,8 @@ local function Initialize()
 
 	if ChangeScreen then
 		timer.Create("AFSU Loading Screen", AFSU.LoadScreenDelay, 0, ChangeLoadingScreen)
+
+		ChangeLoadingScreen()
 	end
 
 	hook.Remove("Initialize", "AFSU Init Loading Screen Change")

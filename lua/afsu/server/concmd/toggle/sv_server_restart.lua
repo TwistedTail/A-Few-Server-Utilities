@@ -15,9 +15,9 @@ local function CancelRestart()
 end
 
 local function BeginRestart(Delay)
-	local Forced = Delay
+	local Forced = isnumber(Delay)
 
-	Delay = Delay or AFSU.RestartDelay
+	Delay = Forced and Delay or AFSU.RestartDelay
 
 	timer.Simple(1, function()
 		if Forced or not next(player.GetHumans()) then

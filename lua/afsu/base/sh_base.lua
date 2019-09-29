@@ -26,5 +26,5 @@ function AFSU.PrintToChat(Type, ...)
 	local Message = istable(...) and ... or { ... }
 
 	MsgC(Data.Color, Prefix, color_white, unpack(Message))
-	Msg("\n")
+	MsgN()
 end
