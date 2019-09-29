@@ -35,11 +35,15 @@ local function SpawnedRagdoll(_, _, Ent)
 	end
 end
 
-if FreezeEnts then
-	hook.Add("PlayerSpawnedProp", "AFSU Freeze Props", SpawnedProp)
-	hook.Add("PlayerSpawnedSENT", "AFSU Freeze SENTs", SpawnedSENT)
-	hook.Add("PlayerSpawnedVehicle", "AFSU Freeze Vehicles", SpawnedSENT)
-	hook.Add("PlayerSpawnedRagdoll", "AFSU Freeze Ragdolls", SpawnedRagdoll)
+local function Initialize()
+	if FreezeEnts then
+		hook.Add("PlayerSpawnedProp", "AFSU Freeze Props", SpawnedProp)
+		hook.Add("PlayerSpawnedSENT", "AFSU Freeze SENTs", SpawnedSENT)
+		hook.Add("PlayerSpawnedVehicle", "AFSU Freeze Vehicles", SpawnedSENT)
+		hook.Add("PlayerSpawnedRagdoll", "AFSU Freeze Ragdolls", SpawnedRagdoll)
+	end
+
+	hook.Remove("Initialize", "AFSU Init Freeze Ents")
 end
 
 AFSU.NewToggleCommand("freeze_ents", function(Player)
@@ -63,3 +67,5 @@ cvars.AddChangeCallback("afsu_freeze_ents", function()
 		hook.Remove("PlayerSpawnedRagdoll", "AFSU Freeze Ragdolls")
 	end
 end)
+
+hook.Add("Initialize", "AFSU Init Freeze Ents", Initialize)
