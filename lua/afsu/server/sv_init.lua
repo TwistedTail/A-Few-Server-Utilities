@@ -1,35 +1,11 @@
 -- Serverside Initialization file
 
-local file = file
 local hook = hook
 local math = math
 local player = player
 local timer = timer
-local util = util
 
-local function CheckFile(File)
-	if not file.Exists(AFSU.DataPath, "DATA") then
-		file.CreateDir(AFSU.DataPath)
-
-		return false
-	end
-
-	return file.Exists(File, "DATA")
-end
-
-local function LoadFileToTable(File, Name)
-	if not CheckFile(File) then return end
-	if not AFSU[Name] then return end
-
-	AFSU[Name] = util.JSONToTable(file.Read(File))
-end
-
-local function SaveTableToFile(File, Name)
-	if not AFSU[Name] then return end
-	if not next(AFSU[Name]) then return end
-
-	file.Write(File, util.TableToJSON(AFSU[Name], true))
-end
+local LoadFileToTable = AFSU.LoadFileToTable
 
 local function ChangeHostName()
 	if AFSU.HostNameDelay > 0 then
@@ -102,5 +78,3 @@ end
 hook.Add("Initialize", "AFSU Initialize", InitServerFiles)
 hook.Add("PlayerInitialSpawn", "AFSU Player Connect", PlayerConnect)
 hook.Add("PlayerDisconnected", "AFSU Player Disconnect", PlayerDisconnect)
-
-AFSU.SaveTableToFile = SaveTableToFile
