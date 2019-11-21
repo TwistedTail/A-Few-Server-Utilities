@@ -25,7 +25,6 @@ Same idea as the previous one, except with your loading screen. If there's at le
 ### Spawned entity freezing
 Incredibly, it's a fairly effective way to prevent server crashes by just spamming props since these will be frozen instantly. It can give your staff some seconds to react to this behavior. It currently covers props, SENTs, vehicles and ragdolls.
 - This utility can be toggled with the console command `afsu toggle freeze_ents`.
-- If your server is focused on ragdoll posing, I'm sorry to tell you this utility will also freeze every single bone on spawned ragdolls, making it really annoying to unfreeze them (I'll fix this problem ASAP).
 
 ## How to install this?
 
@@ -36,10 +35,10 @@ Clone this repository with the SSH `git@github.com:TwistedTail/A-Few-Server-Util
 If you don't care about keeping your server addons updated, you can always [download the addon as a .zip file](https://github.com/TwistedTail/A-Few-Server-Utilities/archive/master.zip) and decompress it inside your addons folder. Don't forget to make sure the folder is placed correctly; if you open it, there should be multiple files and one folder instead of a single folder with the name of the addon (move this folder to your server's addon folder if that's the case and delete the empty one).
 
 ## To-Do list
-- Fix ragdoll unfreezing.
-- Add remove/delete commands.
-- Add update/replace commands.
-- Add chat command support.
-- Add in-game menu to control all the registered utilities.
-- Simplify command creation.
-- Document the code.
+- [x] Fix ragdoll unfreezing.
+- [ ] Add remove/delete commands.
+- [ ] Add update/replace commands.
+- [ ] Add chat command support.
+- [ ] Add in-game menu to control all the registered utilities.
+- [ ] Simplify command creation.
+- [ ] Document the code.
