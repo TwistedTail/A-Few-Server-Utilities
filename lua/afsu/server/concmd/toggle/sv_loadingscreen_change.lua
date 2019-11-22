@@ -31,8 +31,8 @@ AFSU.NewToggleCommand("change_loading_screen", function(Player)
 	SendMessage(Player, "Info", "Loading screen change toggled ", ChangeScreen and "ON" or "OFF", ".")
 end)
 
-cvars.AddChangeCallback("afsu_change_loading_screen", function()
-	ChangeScreen = not ChangeScreen
+cvars.AddChangeCallback("afsu_change_loading_screen", function(_, _, New)
+	ChangeScreen = tobool(New)
 
 	if ChangeScreen then
 		timer.Create("AFSU Loading Screen", AFSU.LoadScreenDelay, 0, ChangeLoadingScreen)

@@ -47,8 +47,8 @@ AFSU.NewToggleCommand("change_hostname", function(Player)
 	SendMessage(Player, "Info", "Hostname change toggled ", ChangeName and "ON" or "OFF", ".")
 end)
 
-cvars.AddChangeCallback("afsu_change_hostname", function()
-	ChangeName = not ChangeName
+cvars.AddChangeCallback("afsu_change_hostname", function(_, _, New)
+	ChangeName = tobool(New)
 
 	if ChangeName then
 		timer.Create("AFSU Server Name", AFSU.HostNameDelay, 0, ChangeHostName)
