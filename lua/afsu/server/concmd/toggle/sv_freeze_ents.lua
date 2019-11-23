@@ -41,6 +41,10 @@ local PhysgunEnts = {}
 local function PhysgunPickup(Player, Ent)
 	if Ent:GetClass() == "prop_ragdoll" then
 		PhysgunEnts[Player] = Ent
+
+		Ent:CallOnRemove("AFSU Ragdoll Freeze", function()
+			PhysgunEnts[Player] = nil
+		end)
 	end
 end
 
@@ -50,9 +54,17 @@ local function PhysgunDrop(Player)
 	end
 end
 
+local function GetViewRagdoll(Player)
+	local Ent = Player:GetEyeTrace().Entity
+
+	return Ent:GetClass() == "prop_ragdoll" and Ent
+end
+
 local function PhysgunReload(_, Player)
-	if PhysgunEnts[Player] then
-		RagdollMotion(PhysgunEnts[Player], true)
+	local Ent = PhysgunEnts[Player] or GetViewRagdoll(Player)
+
+	if Ent then
+		RagdollMotion(Ent, true)
 	end
 end
 
