@@ -1,4 +1,4 @@
-name: GLuaFixer_Linter
+name: GLuaFixer
 
 on: [push, pull_request]
 
