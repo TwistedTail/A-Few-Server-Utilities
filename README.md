@@ -1,5 +1,7 @@
 # A Few Server Utilities
 
+[![Actions Status](https://github.com/TwistedTail/A-Few-Server-Utilities/workflows/GLuaFixer/badge.svg)](https://github.com/TwistedTail/A-Few-Server-Utilities/actions)
+
 ## What's this?
 This is an addon for [Garry's Mod](https://garrysmod.com), which adds a set of functions that could be useful for most, if not all, server owners.
 
