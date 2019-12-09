@@ -1,6 +1,7 @@
 # A Few Server Utilities
 
-[![Actions Status](https://github.com/TwistedTail/A-Few-Server-Utilities/workflows/GLuaFixer/badge.svg)](https://github.com/TwistedTail/A-Few-Server-Utilities/actions)
+[![Linting Status](https://img.shields.io/github/workflow/status/TwistedTail/A-Few-Server-Utilities/GLuaFixer?label=Linter%20Status)](https://github.com/TwistedTail/A-Few-Server-Utilities/actions?query=workflow%3AGLuaFixer)
+[![Repository Size](https://img.shields.io/github/repo-size/TwistedTail/A-Few-Server-Utilities?label=Repository%20Size)](https://github.com/TwistedTail/A-Few-Server-Utilities)
 
 ## What's this?
 This is an addon for [Garry's Mod](https://garrysmod.com), which adds a set of functions that could be useful for most, if not all, server owners.
