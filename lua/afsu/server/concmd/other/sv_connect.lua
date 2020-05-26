@@ -1,4 +1,6 @@
 
+local LoadFileToTable = AFSU.LoadFileToTable
+local UpdateLookup = AFSU.GetLookupTable
 local GetLookup = AFSU.GetLookupTable
 local SendMessage = AFSU.SendMessage
 local Response = AFSU.SendResponse
@@ -28,3 +30,10 @@ AFSU.RegisterSingleCommand("connect", function(Player, Name)
 
 	timer.Simple(1, function() Response(Player, "Connect", { IP = Data.Address }) end)
 end, 0)
+
+hook.Add("Initialize", "AFSU Redirect Init", function()
+	LoadFileToTable(AFSU.HostnamesFile, "Hostnames")
+	UpdateLookup("Hostnames", "Name", true)
+
+	hook.Remove("Initialize", "AFSU Redirect Init")
+end)

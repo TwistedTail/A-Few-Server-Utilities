@@ -221,7 +221,16 @@ do -- File saving and loading
 		if not CheckFile(File) then return end
 		if not AFSU[Name] then return end
 
-		AFSU[Name] = util.JSONToTable(file.Read(File))
+		local Table = util.JSONToTable(file.Read(File))
+		local Data = AFSU[Name]
+
+		if next(Data) then
+			for K in pairs(Data) do Data[K] = nil end
+		end
+
+		for K, V in pairs(Table) do
+			Data[K] = V
+		end
 	end
 
 	function AFSU.SaveTableToFile(File, Name)
