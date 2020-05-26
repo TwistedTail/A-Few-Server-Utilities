@@ -11,7 +11,7 @@ AFSU.NewListCommand("server_redirect", function(Player)
 		Message = "Listing " .. #Hosts .. " redirect servers:"
 
 		for _, V in ipairs(Hosts) do
-			Message = Message .. "\n » " .. V.Name .. " = " .. V.Address
+			Message = Message .. "\n » [" .. V.Name:upper() .. "]\t = " .. V.Address
 		end
 	end
 

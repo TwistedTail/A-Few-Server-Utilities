@@ -6,6 +6,7 @@ local Names = AFSU.ServerNames
 AFSU.NewAddCommand("server_name", function(Player, Name)
 	if not Name then
 		SendMessage(Player, "Error", "No server name was entered!")
+		SendMessage(Player, "Info", "Usage: afsu add server_name <Name>")
 		return
 	end
 

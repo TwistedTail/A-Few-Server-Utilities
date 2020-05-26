@@ -13,7 +13,7 @@ AFSU.RegisterSingleCommand("connect", function(Player, Name)
 
 	if not Name then
 		SendMessage(Player, "Error", "No server name was entered!")
-		Response(Player, "ConCommand", { "afsu", "list", "server_redirect" })
+		SendMessage(Player, "Info", "Usage: afsu connect <Name>")
 		return
 	end
 

@@ -6,6 +6,7 @@ local Screens = AFSU.LoadingScreens
 AFSU.NewAddCommand("loading_screen", function(Player, URL)
 	if not URL then
 		SendMessage(Player, "Error", "No loading screen URL was entered!")
+		SendMessage(Player, "Info", "Usage: afsu add loading_screen <URL>")
 		return
 	end
 

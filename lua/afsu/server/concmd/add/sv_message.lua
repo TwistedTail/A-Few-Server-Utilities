@@ -6,6 +6,7 @@ local Messages = AFSU.ServerMessages
 AFSU.NewAddCommand("server_message", function(Player, Name)
 	if not Name then
 		SendMessage(Player, "Error", "No server message was entered!")
+		SendMessage(Player, "Info", "Usage: afsu add server_message <Message>")
 		return
 	end
 
