@@ -29,7 +29,7 @@ AFSU.NewToggleCommand("change_loading_screen", function(Player)
 	ChangeConVar:SetBool(not ChangeScreen)
 
 	SendMessage(Player, "Info", "Loading screen change toggled ", ChangeScreen and "ON" or "OFF", ".")
-end)
+end, 2)
 
 cvars.AddChangeCallback("afsu_change_loading_screen", function(_, _, New)
 	ChangeScreen = tobool(New)

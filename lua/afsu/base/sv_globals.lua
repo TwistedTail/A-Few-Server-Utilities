@@ -9,7 +9,9 @@ AFSU.DataPath =				"a-few-server-utils/"
 AFSU.NamesFile =			AFSU.DataPath .. "server-names.json"
 AFSU.MessagesFile =			AFSU.DataPath .. "server-messages.json"
 AFSU.LoadingScreenFile =	AFSU.DataPath .. "loading-screens.json"
+AFSU.HostnamesFile =		AFSU.DataPath .. "hostnames.json"
 
 AFSU.ServerNames =			AFSU.ServerNames or {}
 AFSU.ServerMessages =		AFSU.ServerMessages or {}
 AFSU.LoadingScreens =		AFSU.LoadingScreens or {}
+AFSU.Hostnames =			AFSU.Hostnames or {}

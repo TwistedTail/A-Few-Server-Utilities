@@ -45,7 +45,7 @@ AFSU.NewToggleCommand("restart_server", function(Player)
 	RestartConVar:SetBool(not Restart)
 
 	SendMessage(Player, "Info", "Server restart toggled ", Restart and "ON" or "OFF", ".")
-end)
+end, 2)
 
 cvars.AddChangeCallback("afsu_server_restart", function(_, _, New)
 	Restart = tobool(New)

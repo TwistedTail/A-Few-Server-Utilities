@@ -1,16 +1,14 @@
 
 local SendMessage = AFSU.SendMessage
+local Messages = AFSU.ServerMessages
 
 AFSU.NewListCommand("server_message", function(Player)
-	local Type, Message
-	local Messages = AFSU.ServerMessages
+	local Type = "Info"
+	local Message = "No server messages have been registered!"
 
-	if not next(Messages) then
-		Type = "Info"
-		Message = "No registered server messages!"
-	else
+	if next(Messages) then
 		Type = "Normal"
-		Message = "Listing " .. #Messages .. " registered server messages:"
+		Message = "Listing " .. #Messages .. " server messages:"
 
 		for _, V in ipairs(Messages) do
 			Message = Message .. "\n » " .. V
@@ -18,4 +16,4 @@ AFSU.NewListCommand("server_message", function(Player)
 	end
 
 	SendMessage(Player, Type, Message)
-end)
+end, 1, true)

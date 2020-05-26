@@ -1,16 +1,14 @@
 
 local SendMessage = AFSU.SendMessage
+local Screens = AFSU.LoadingScreens
 
 AFSU.NewListCommand("loading_screen", function(Player)
-	local Type, Message
-	local Screens = AFSU.LoadingScreens
+	local Type = "Info"
+	local Message = "No loading screens have been registered!"
 
-	if not next(Screens) then
-		Type = "Info"
-		Message = "No registered loading screen URLs!"
-	else
+	if next(Screens) then
 		Type = "Normal"
-		Message = "Listing " .. #Screens .. " registered loading screen URLs:"
+		Message = "Listing " .. #Screens .. " loading screens:"
 
 		for _, V in ipairs(Screens) do
 			Message = Message .. "\n » " .. V
@@ -18,4 +16,4 @@ AFSU.NewListCommand("loading_screen", function(Player)
 	end
 
 	SendMessage(Player, Type, Message)
-end)
+end, 1, true)

@@ -100,7 +100,7 @@ AFSU.NewToggleCommand("freeze_ents", function(Player)
 	FreezeConVar:SetBool(not FreezeEnts)
 
 	SendMessage(Player, "Info", "Entity freezing toggled ", FreezeEnts and "ON" or "OFF", ".")
-end)
+end, 1)
 
 cvars.AddChangeCallback("afsu_freeze_ents", function(_, _, New)
 	FreezeEnts = tobool(New)

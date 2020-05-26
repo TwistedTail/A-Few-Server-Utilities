@@ -45,7 +45,7 @@ AFSU.NewToggleCommand("change_hostname", function(Player)
 	ChangeConVar:SetBool(not ChangeName)
 
 	SendMessage(Player, "Info", "Hostname change toggled ", ChangeName and "ON" or "OFF", ".")
-end)
+end, 2)
 
 cvars.AddChangeCallback("afsu_change_hostname", function(_, _, New)
 	ChangeName = tobool(New)
