@@ -29,6 +29,10 @@ Same idea as the previous one, except with your loading screen. If there's at le
 Incredibly, it's a fairly effective way to prevent server crashes by just spamming props since these will be frozen instantly. It can give your staff some seconds to react to this behavior. It currently covers props, SENTs, vehicles and ragdolls.
 - This utility can be toggled with the console command `afsu toggle freeze_ents`.
 
+### Steam Family Share prevention
+Meant for those servers that are having issues with players rejoining under family shared accounts to evade bans, this feature will promptly get rid of them as soon as they're done loading.
+- This utility is toggled `off` by the default and can be enabled with the console command `afsu toggle allow_family_share`.
+
 ## How to install this?
 
 ### The recommended way
